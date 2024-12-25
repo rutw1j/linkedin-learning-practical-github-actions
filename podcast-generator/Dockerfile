@@ -6,9 +6,12 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     git
 
+# Create and activate a virtual environment
+RUN python3 -m venv /env
+ENV PATH="/env/bin:$PATH"
 
-# Install Python dependencies
-RUN pip3 install PyYAML
+# Install Python dependencies inside the virtual environment
+RUN pip install --upgrade pip && pip install PyYAML
 
 # Copy your script and Python code into the container
 COPY feed.py /usr/bin/linkedin-learning-practical-github-actions/podcast-generator/feed.py
