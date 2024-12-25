@@ -15,5 +15,8 @@ RUN pip3 install PyYAML
 COPY feed.py /usr/bin/linkedin-learning-practical-github-actions/podcast-generator/feed.py
 COPY entrypoint.sh /entrypoint.sh
 
+# Give execution permissions to the entrypoint script
+RUN chmod +x /entrypoint.sh
+
 # Set the entry point for the container
 ENTRYPOINT ["/entrypoint.sh"]
